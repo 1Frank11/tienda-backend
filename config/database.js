@@ -6,9 +6,13 @@ const pool = new Pool({
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS
+  password: process.env.DB_PASS,
+  ssl: {
+    require: true,
+    rejectUnauthorized: false
+  }
 });
-
+module.exports = pool;
 // Probar conexión al iniciar
 pool.on('connect', () => {
   console.log('✅ Conectado a PostgreSQL');
