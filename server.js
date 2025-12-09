@@ -16,6 +16,7 @@ const userRoutes = require('./routes/userRoutes');
 const reporteRoutes = require('./routes/reporteRoutes');
 const sistemaRoutes = require('./routes/sistemaRoutes');
 
+
 // Usar rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/productos", productoRoutes);
@@ -23,6 +24,7 @@ app.use("/api/ventas", ventaRoutes);
 app.use('/api/usuarios', userRoutes); 
 app.use('/api/reportes', reporteRoutes);
 app.use('/api/sistema', sistemaRoutes);
+
 
 // Ruta de documentación e información
 app.get("/", (req, res) => {

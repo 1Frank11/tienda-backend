@@ -12,7 +12,6 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-module.exports = pool;
 // Probar conexión al iniciar
 pool.on('connect', () => {
   console.log('✅ Conectado a PostgreSQL');
