@@ -5,7 +5,16 @@ require("dotenv").config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://micro-tienda-frontend.vercel.app",
+    "https://micro-tienda-frontend-e61azu2pi-franks-projects-9f604064.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Importar rutas
