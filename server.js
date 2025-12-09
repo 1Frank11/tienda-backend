@@ -6,14 +6,12 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: [
-    "https://micro-tienda-frontend.vercel.app",
-    "https://micro-tienda-frontend-e61azu2pi-franks-projects-9f604064.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
 }));
+
+app.options("*", cors());
 
 app.use(express.json());
 
