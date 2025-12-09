@@ -5,14 +5,16 @@ require("dotenv").config();
 const app = express();
 
 // Middlewares
+const cors = require("cors");
+
 app.use(cors({
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: true,              // ✅ permite cualquier origen dinámicamente
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-app.options("*", cors());
-
+app.options("*", cors());    // ✅ requerido para preflight
 app.use(express.json());
 
 // Importar rutas
@@ -23,7 +25,6 @@ const userRoutes = require('./routes/userRoutes');
 const reporteRoutes = require('./routes/reporteRoutes');
 const sistemaRoutes = require('./routes/sistemaRoutes');
 
-
 // Usar rutas
 app.use("/api/auth", authRoutes);
 app.use("/api/productos", productoRoutes);
@@ -31,7 +32,6 @@ app.use("/api/ventas", ventaRoutes);
 app.use('/api/usuarios', userRoutes); 
 app.use('/api/reportes', reporteRoutes);
 app.use('/api/sistema', sistemaRoutes);
-
 
 // Ruta de documentación e información
 app.get("/", (req, res) => {
